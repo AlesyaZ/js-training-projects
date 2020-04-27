@@ -1,6 +1,6 @@
 import { card} from './Cards.js'
 import {statisticsCard} from './Categories.js'
-localStorage.clear();
+
 let cards = ["Action (set A)","Action (set B)","Animal (set A)","Animal (set B)","Clothes","Emotions","Professions","Weather"];
 let categories =[
     {
@@ -40,12 +40,11 @@ let categories =[
 let statisticsCateg=["Category &#8661;","Word &#8661;","Translate &#8661;","Clicks &#8661;","Correct &#8661;","Wrong &#8661;","Wrong % &#8661;"],
 statisticsBtn=["Repeat difficult words","Reset"];
 
-let wrapper = document.querySelector(".wrapper");
 let cardsContainer = document.querySelector(".cards-container");
 let navigation = document.querySelectorAll(".navigation a");
 let nav = document.querySelector(".navigation");
 let btnGame = document.querySelector(".button");
-let modalWindow = document.querySelector(".modal-window");
+let modalWindow = document.querySelector(".modal");
 let statisticsTable = document.querySelector(".statistics");
 let starsContainer = document.querySelector(".stars-container");
 let switcher = document.querySelector(".switcher > input");
@@ -58,43 +57,47 @@ let headerHumburger = document.querySelector(".header__hamburger");
 let navContainer = document.querySelector(".navigation-container");
 let navCategories = document.querySelector(".navigation > ul");
 
-function menuTransition(e, category ,s,i){
+function menuTransition(elem, category, CardsReapetDifficult, WordsReapetDifficult) {
     
     if(headerName.innerText=category,
         navigation.forEach(el => {
-            el.classList.remove("selected");
-            el.innerHTML === category && el.classList.add("selected")
-        }), s)
-        cards = i;
+            el.classList.remove("select");
+            el.innerHTML === category && el.classList.add("select")
+        }), CardsReapetDifficult) 
+    cards = WordsReapetDifficult;
     else {
-        let n=e[0].indexOf(category);
-        cards =e[n+1]}CardCard.forEach((function(e,t){
-            var s=e;
-        t < cards.length ?(s.querySelector(".front > .card__title").innerText=cards[t].word,
-        s.querySelector(".back > .card__title").innerText=cards[t].translation,
-        s.querySelectorAll(".card__image").forEach(e =>{
-            e.setAttribute("src",cards[t].image)
-        })):s.classList.add("display-none"),
-            switcher.checked ? s.classList.add("play") : s.classList.add("train")
-        })),
-    switcher.checked?document.querySelector(".button").classList.remove("hidden"):document.querySelector(".button").classList.add("hidden");
+        let CategoryMenuClick = elem[0].indexOf(category);
+        cards = elem[CategoryMenuClick+1]}CardCard.forEach((elem, i) => {
+            let wordCards = elem;
+            if (i < cards.length) {
+                wordCards.querySelector(".front > .card__title").innerText = cards[i].word,
+                wordCards.querySelector(".back > .card__title").innerText = cards[i].translation,
+                wordCards.querySelectorAll(".card__image").forEach(el =>{
+                    el.setAttribute("src",cards[i].image)
+                }) 
+            } else {
+                wordCards.classList.add("display-none")
+            }
+            switcher.checked ? wordCards.classList.add("play") : wordCards.classList.add("train")
+        }),
+    switcher.checked ? btnGame.classList.remove("hidden") : btnGame.classList.add("hidden");
 };
 
-const flip = (e, t) => {
-    t.classList.add("translation");
+const flip = (elem, translat) => {
+    translat.classList.add("translation");
 
-    var s=Array.from(CardCard).indexOf(t),
-    a=JSON.parse(localStorage.getItem("statistics"));
-    a[e[s].word].ClicksInTrainingMode+=1,
-    localStorage.setItem("statistics",JSON.stringify(a))
+    let CardCardArray = Array.from(CardCard).indexOf(translat),
+    statisticsTableSave = JSON.parse(localStorage.getItem("statistics"));
+    statisticsTableSave[elem[CardCardArray].word].СlicksСard += 1,
+    localStorage.setItem("statistics",JSON.stringify(statisticsTableSave))
 };
 
 const translCard = (el) => {
-    el.classList.contains("translation")&&el.classList.remove("translation")
+    el.classList.contains("translation")&& el.classList.remove("translation")
 };
 
 
-let d, u, g, m, playMusic = function(e, t, s){
+let words, startGame, game, avtivePlay, playGame = function(e, translat, elem) {
     input.checked ? nav.classList.add("playNav") : nav.classList.remove("playNav");
     
     if (CardC.classList.contains("train")||CardC.classList.contains("play")) {
@@ -114,8 +117,8 @@ let d, u, g, m, playMusic = function(e, t, s){
         if (input.checked) {
             btnGame.classList.remove("hidden");
         } else {
-            document.querySelector(".cards-container").removeEventListener("click", t);
-            btnGame.removeEventListener("click", s);
+            cardsContainer.removeEventListener("click", translat);
+            btnGame.removeEventListener("click", elem);
             starsContainer.innerHTML="";
             btnGame.innerText="Start game";
             btnGame.classList.remove("repeat");
@@ -128,29 +131,29 @@ let d, u, g, m, playMusic = function(e, t, s){
             input.checked ? el.classList.add("ready-to-play") : el.classList.remove("ready-to-play");
         });
     };
-}, y = false;
+}, playG = false;
 
-function sound (e,t){
-    m = function() {
-        u.play()
+function playTrain (wordsSort, Card){
+    avtivePlay = function() {
+        startGame.play()
     };
     
-    g=function() {
+    game = function() {
         if (event.target !== event.currentTarget && !event.target.closest(".card").classList.contains("correct"));
         
-        if(event.target.closest(".card").querySelector(".card__title").innerText === d[d.length-1].word) {
+        if(event.target.closest(".card").querySelector(".card__title").innerText === words[words.length-1].word) {
             let stat = JSON.parse(localStorage.getItem("statistics"));
 
-            if(stat[d[d.length-1].word].Guessed+=1,
+            if(stat[words[words.length-1].word].Guessed+=1,
             localStorage.setItem("statistics",JSON.stringify(stat)),
             event.target.closest(".card").classList.add("correct"),
             document.querySelector(".stars-container").insertAdjacentHTML("afterbegin",'<span style="background-image: url(./assets/img/star-win.svg)" class="star"></span>'),
             new Audio("./assets/audio/correct.mp3").play(),
-            d.pop(), 0 !== d.length) {
+            words.pop(), 0 !== words.length) {
         
-                u = new Audio(d[d.length-1].audioSrc),
+                startGame = new Audio(words[words.length-1].audioSrc),
                 setTimeout((function(){
-                    u.play()
+                    startGame.play()
                 }) ,500);
             } else {
                 if(modalWindow.innerHTML="", 0 === document.querySelectorAll(".mistake").length) {
@@ -172,75 +175,75 @@ function sound (e,t){
                 if (modalWindow.style.display="flex",
                     headerName.innerText="Main Page",
                     navigation.forEach(function(el){
-                        el.classList.remove("selected"),"Main Page"===el.innerHTML&&el.classList.add("selected")
+                        el.classList.remove("select"),"Main Page"===el.innerHTML&&el.classList.add("select")
                     }),
                     document.body.style.overflow="hidden",
-                    document.querySelector(".button.repeat").removeEventListener("click",m),
+                    document.querySelector(".button.repeat").removeEventListener("click", avtivePlay),
                     btnGame.innerText="Start game",
                     btnGame.classList.remove("repeat"),
                     btnGame.removeAttribute("style"),
                     btnGame.classList.add("hidden"),
                     null !== statisticsTable) {
 
-                    let i=statisticsTable;
-                    i.parentNode.removeChild(i)
+                    let statistics = statisticsTable;
+                    statistics.parentNode.removeChild(statistics)
                 } 
             
-                CardCard.forEach(function(el,arr){
-                    let a=el;
-                    a.classList.remove("play"),
-                    a.classList.remove("correct"),
-                    a.classList.remove("display-none"),
-                    a.querySelector(".card__image").setAttribute("src", t[arr].image),
-                    a.querySelector(".card__title").innerText = t[arr].title
+                CardCard.forEach(function(elem, arr){
+                    let cardTrain = elem;
+                    cardTrain.classList.remove("play"),
+                    cardTrain.classList.remove("correct"),
+                    cardTrain.classList.remove("display-none"),
+                    cardTrain.querySelector(".card__image").setAttribute("src", Card[arr].image),
+                    cardTrain.querySelector(".card__title").innerText = Card[arr].title
                 });
                     
-                    document.querySelector(".stars-container").innerHTML="",
-                setTimeout((function(){
+                    document.querySelector(".stars-container").innerHTML = "",
+                setTimeout(function(){
                     modalWindow.style.display="none",document.body.style.overflow="visible"
-                }), 3e3 ), y=false,
+                }, 3e3 ), playG = false,
                 
-                cardsContainer.removeEventListener("click",g)
+                cardsContainer.removeEventListener("click", game )
             };
         } else {
-            let i = JSON.parse(localStorage.getItem("statistics"));
-            i[d[d.length-1].word].Mistakes+=1,
-            localStorage.setItem("statistics",JSON.stringify(i)),
+            let statistics = JSON.parse(localStorage.getItem("statistics"));
+            statistics[words[words.length-1].word].Mistakes+=1,
+            localStorage.setItem("statistics",JSON.stringify(statistics)),
             document.querySelector(".stars-container").insertAdjacentHTML("afterbegin",'<span style="background-image: url(./assets/img/star.svg)" class="star mistake"></span>'),
             new Audio("./assets/audio/error.mp3").play()
         };
     };
 
-    switcherS.addEventListener("click",(function(){
-        y=!1;
+    switcherS.addEventListener("click",(() => {
+        playG = false;
     }));
     
     document.querySelector(".navigation > ul").addEventListener("click", (el) => {
-        "A"===el.target.tagName && (y=!1)
+        "A"===el.target.tagName && (playG = false)
     });
 
-    y || (y=true, d = (d= e.slice(0)).sort(function(){
+    playG || (playG = true, words = (words= wordsSort.slice(0)).sort(function(){
             return Math.random()-.5
         }),
 
-        u=new Audio(d[d.length-1].audioSrc),
-        setTimeout(function(){
-            u.play()
+        startGame = new Audio(words[words.length-1].audioSrc),
+        setTimeout(() => {
+            startGame.play()
         },500),
         
-        cardsContainer.addEventListener("click",g),
+        cardsContainer.addEventListener("click", game),
         btnGame.innerText="",
         btnGame.classList.add("repeat"),
         btnGame.setAttribute("style","background-image: url(./assets/img/repeat.png)"),
-        document.querySelector(".button.repeat").addEventListener("click",m))
+        document.querySelector(".button.repeat").addEventListener("click", avtivePlay))
 };
                                             
-var StatisticsS =function(e,t){
-    var s=Array.from(document.querySelectorAll(".card")).indexOf(t),
-    a=JSON.parse(localStorage.getItem("statistics"));
-    a[e[s].word].ClicksInTrainingMode+=1,
-    localStorage.setItem("statistics",JSON.stringify(a)),
-    new Audio(e[s].audioSrc).play()
+let StatisticsS = function(el, t){
+    let cardArray =Array.from(document.querySelectorAll(".card")).indexOf(t),
+    cardStatist = JSON.parse(localStorage.getItem("statistics"));
+    cardStatist[el[cardArray].word].СlicksСard+=1,
+    localStorage.setItem("statistics",JSON.stringify(cardStatist)),
+    new Audio(el[cardArray].audioSrc).play()
 };                                       
 function activeNavigation(){
     headerHumburger.classList.toggle("active");
@@ -298,8 +301,8 @@ const statist = (words, DifficultWords, statisticsTabl) => {
     headerName.innerText="Statistics";
     
     navigation.forEach(function(el){
-        el.classList.remove("selected");
-        "Statistics"===el.innerHTML && el.classList.add("selected")
+        el.classList.remove("select");
+        "Statistics"===el.innerHTML && el.classList.add("select")
     });
     
     starsContainer.classList.add("display-none"),
@@ -323,7 +326,7 @@ const statist = (words, DifficultWords, statisticsTabl) => {
         row.appendChild(new element("div","row__cell","".concat(el[1].Category)));
         row.appendChild(new element("div","row__cell","".concat(el[0])));
         row.appendChild(new element("div","row__cell","".concat(el[1].Translation)));
-        row.appendChild(new element("div","row__cell","".concat(el[1].ClicksInTrainingMode)));
+        row.appendChild(new element("div","row__cell","".concat(el[1].СlicksСard)));
         row.appendChild(new element("div","row__cell","".concat(el[1].Guessed)));
         row.appendChild(new element("div","row__cell","".concat(el[1].Mistakes)));
              
@@ -368,7 +371,7 @@ const statist = (words, DifficultWords, statisticsTabl) => {
             });
             
             var wordsRepeat = arr.length < 8 ? [].concat(arr) : arr.slice(0,8),
-                i=[];
+                i = [];
 
             wordsRepeat.forEach(function(el){
                     words.forEach(function(value,cell){
@@ -392,14 +395,14 @@ const statist = (words, DifficultWords, statisticsTabl) => {
         }
     }));
 
-    document.querySelector(".stat-button:nth-child(2)").addEventListener("click",(function(){
+    document.querySelector(".stat-button:nth-child(2)").addEventListener("click",(() => {
         localStorage.setItem("statistics", JSON.stringify(statisticsTabl));
         let statistics = document.querySelector(".statistics");
         statistics.parentNode.removeChild(statistics),
         statist (words, DifficultWords, statisticsTabl);
     }));
 
-    document.querySelector(".table__row:first-child").addEventListener("click",(function(event){
+    document.querySelector(".table__row:first-child").addEventListener("click",((event) => {
         if (event.target.classList.contains("row__cell")) {
         let tableRowArr=document.querySelectorAll(".table__row")[0],
         array = Array.from(tableRowArr.querySelectorAll(".row__cell")).indexOf(event.target);
@@ -453,25 +456,25 @@ cardsContainer.addEventListener("click", (el) => {
 });
         
 CardCard.forEach(el => {
-    el.addEventListener("mouseleave", function () {
+    el.addEventListener("mouseleave", () => {
         return translCard(el);
     });
 });
         
 cardsContainer.addEventListener("click", (el) => {
-    el.target!==el.currentTarget&&el.target.closest(".card").classList.contains("train")&&(el.target.classList.contains("rotate")||StatisticsS(cards,el.target.closest(".card")))
+    el.target !== el.currentTarget && el.target.closest(".card").classList.contains("train") && (el.target.classList.contains("rotate") || StatisticsS(cards,el.target.closest(".card")))
 });
         
 cardsContainer.addEventListener("click", (el) => {
-    el.target!==el.currentTarget&&(el.target.closest(".card").classList.contains("train")||el.target.closest(".card").classList.contains("play")||menuTransition(card,el.target.closest(".card").querySelector(".front > .card__title").innerText,!1))
+    el.target !== el.currentTarget && (el.target.closest(".card").classList.contains("train") || el.target.closest(".card").classList.contains("play") || menuTransition(card,el.target.closest(".card").querySelector(".front > .card__title").innerText,false))
 });
         
 switcherS.addEventListener("click", (el) => {
-    return playMusic(el.currentTarget, g, m);
+    return playGame(el.currentTarget, game, avtivePlay);
 });
 
 btnGame.addEventListener("click", (el) =>{
-    el.currentTarget.classList.contains("hidden") || (y || 8 !== document.querySelectorAll(".card.display-none").length && sound(cards, categories));
+    el.currentTarget.classList.contains("hidden") || (playG || 8 !== document.querySelectorAll(".card.display-none").length && playTrain(cards, categories));
 });
 
 headerHumburger.addEventListener("click", activeNavigation);
@@ -489,9 +492,9 @@ navCategories.addEventListener("click",(el) => {
             btnGame.innerText="Start game",
             btnGame.classList.remove("repeat"),
             btnGame.removeAttribute("style"),
-            document.querySelectorAll(".correct").forEach((function(e){
-                e.classList.remove("correct")}))
-            }(g,m), 
+            document.querySelectorAll(".correct").forEach(e => {
+                e.classList.remove("correct")})
+            }(game, avtivePlay), 
             null !== document.querySelector(".statistics")
             ){
             let t=document.querySelector(".statistics");
@@ -499,26 +502,26 @@ navCategories.addEventListener("click",(el) => {
             starsContainer.classList.remove("display-none"),
             cardsContainer.classList.remove("display-none"),
             btnGame.classList.remove("display-none"),
-            document.querySelectorAll(".card").forEach(function(e){
+            document.querySelectorAll(".card").forEach(e =>{
                 e.classList.remove("display-none")
             })  
         };
 
-        "Main Page"===el.target.innerHTML?function(e){
-            document.querySelector(".header__section-name").innerText="Main Page",
-            document.querySelectorAll(".card").forEach(function(a,s){
-            a.classList.remove("play"),
-                a.classList.remove("train"),
-                a.querySelector(".card__image").setAttribute("src",e[s].image),
-                a.querySelector(".card__title").innerText=e[s].title
-            }),
-            btnGame.classList.add("hidden"),
-            navigation.forEach(function(el){
-                el.classList.remove("selected"),"Main Page"===e.innerHTML&&e.classList.add("selected")
-            })
-        }
-
-        (categories):"Statistics"===el.target.innerHTML?statist(card,menuTransition ,statisticsCard):menuTransition(card,el.target.innerHTML,false),
+         ("Main Page"===el.target.innerHTML) ? 
+            function(elem) {
+                document.querySelector(".header__section-name").innerText="Main Page",
+                document.querySelectorAll(".card").forEach(function(cards, CardElem){
+                    cards.classList.remove("play"),
+                    cards.classList.remove("train"),
+                    cards.querySelector(".card__image").setAttribute("src",elem[CardElem].image),
+                    cards.querySelector(".card__title").innerText=elem[CardElem].title
+                }),
+                btnGame.classList.add("hidden"),
+                navigation.forEach(el => {
+                    el.classList.remove("select"),"Main Page"===elem.innerHTML&&elem.classList.add("select")
+                })
+            } 
+            (categories) : "Statistics" === el.target.innerHTML ? statist(card, menuTransition ,statisticsCard) : menuTransition(card,el.target.innerHTML, false),
         activeNavigation();
     }
 });

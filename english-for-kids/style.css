@@ -256,7 +256,7 @@ header {
     opacity: 0.3;
 }
 
-.modal-window {
+.modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -270,25 +270,25 @@ header {
     z-index: 3;
 }
 
-.modal-window img {
+.modal img {
     height: auto;
     max-width: 484px;
 }
 
 @media (max-width: 700px) {
-    .modal-window img {
+    .modal img {
         max-width:300px;
     }
 }
 
-.modal-window div {
+.modal div {
     font-family: 'Roboto', sans-serif;
     font-size: 58px;
     color: #DA4452;
 }
 
 @media (max-width: 700px) {
-    .modal-window div {
+    .modal div {
         font-size:30px;
     }
 }
@@ -340,7 +340,7 @@ header {
     }
 }
 
-.navigation a.selected {
+.navigation a.select {
     text-decoration: underline;
 }
 
