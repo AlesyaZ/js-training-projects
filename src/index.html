@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Movie search</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+        <link href="../src/views/Keyboard/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header">
+            <h1>MovieSearch</h1>
+        </header>
+
+        <main class="container">
+            <form class ="search_input">
+                <input class="searchMovie_input" type="search" placeholder="Search movie" autofocus autocomplete="off">
+                <button class="search_btn" id="search_btn_movie" type="submit">Search</button>
+                <div class="search_btn" id='keyboard-btn'> 
+                <img class="arrow" src="../src/images/keyboard.png" height="30px"/> 
+                </div>
+            </form>
+            <div class="keyboard"></div>
+            
+            <div class="search-results"></div>
+
+            <div class="moves-wripper">
+
+            <div class="swiper-container">
+                <div class='cssload-loader' id="loader">
+                    <div class='cssload-inner cssload-one'></div>
+                    <div class='cssload-inner cssload-two'></div>
+                    <div class='cssload-inner cssload-three'></div>
+                  </div>
+
+                <div class="swiper-wrapper">
+                </div>
+                <div class="swiper-pagination"></div>               
+                <div class="total-results"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+
+            </div>
+
+        </main>
+        
+        <footer class="footer">
+            <div class="footer-container">
+                <a href="https://rs.school/">
+                    RS School 2020q1
+                </a>
+                <a href="https://github.com/AlesyaZ">
+                    <img src="../src/images/github-logo.png" class="logo_github" height="30px"/>
+                    AlesyaZ
+                </a>
+            </div>
+        </footer>
+        
+        <script src="../src/views/Keyboard/keyboard.js"></script>
+    </body>
+</html>
