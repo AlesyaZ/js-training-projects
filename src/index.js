@@ -5,6 +5,7 @@ import getMovies from './models/MovieApi';
 import getRate from './models/MovieRate';
 import getTranslation from './models/MovieTranslate';
 import './style.css';
+import './views/Loader/loader.css';
 
 Swiper.use([Navigation, Pagination, Scrollbar]);
 
