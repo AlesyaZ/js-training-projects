@@ -1,0 +1,122 @@
+.keyboard {
+    margin-top:5vh;
+    height: 245px;
+    width: 700px;
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    border: 2px solid #7B68EE;
+    background-color:#7B68EE;
+    border-radius: 2vh;
+    color: white;
+    padding: 5px;
+    z-index: 20;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 10%);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.33s, opacity 0.33s linear;
+}
+
+.keyboard::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.keyK {
+    width: 30px;
+    height: 30px;
+    border: 1px solid grey;
+    margin: 3px;
+    padding: 3px;
+    float: left;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #C0C0C0;
+}
+
+.Space,
+.ShiftRight,
+.ShiftLeft,
+.Enter,
+.CapsLock,
+.Tab,
+.BackSpace {
+    width: auto;
+    background-color: #696969;
+    border: 1px solid #696969;
+}
+
+.Space.active,
+.ShiftRight.active,
+.ShiftLeft.active,
+.Enter.active,
+.CapsLock.active,
+.Tab.active,
+.BackSpace.active,
+.CtrlRight.active,
+.CtrlLeft.active,
+.AltLeft.active,
+.AltRight.active,
+.Win.active,
+.ArrowLeft.active,
+.ArrowRight.active,
+.ArrowUp.active,
+.ArrowDown.active,
+.Del.active {
+    background-color:#2F4F4F;
+}
+
+.AltLeft,
+.AltRight,
+.Win,
+.ArrowLeft,
+.ArrowRight,
+.ArrowUp,
+.ArrowDown,
+.Del {
+    background-color:#696969;
+    border: 1px solid #696969;
+}
+
+.CtrlRight,
+.CtrlLeft{
+    width: 40px;
+    background-color: #696969;
+    border: 1px solid #696969;
+}
+
+.keyK.Space{
+    width:290px;
+}
+.keyK.ShiftRight,
+.keyK.ShiftLeft{
+    width:85px;
+}
+
+.keyK.CapsLock {
+     width: 105px;  
+}
+.keyK.Enter {
+    width: 65px;
+}
+
+.keyK.Tab{
+    width: 50px;
+}
+
+.active {
+    background-color: black;
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 15px;
+}
+
