@@ -1,0 +1,42 @@
+{
+  "name": "alesyaz-rs2020q1",
+  "version": "1.0.0",
+  "description": "Private repository for @alesyaz",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "coverage": "jest --coverage",
+    "dev": "webpack-dev-server --node development --watch",
+    "build": "webpack --node production",
+    "lint": "eslint src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolling-scopes-school/alesyaz-RS2020Q1.git"
+  },
+  "author": "Alesya Zarembo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolling-scopes-school/alesyaz-RS2020Q1/issues"
+  },
+  "homepage": "https://github.com/rolling-scopes-school/alesyaz-RS2020Q1#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.20.2",
+    "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "swiper": "^5.3.8"
+  }
+}
