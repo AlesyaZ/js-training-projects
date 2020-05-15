@@ -8,9 +8,18 @@ import './style.css';
 
 Swiper.use([Navigation, Pagination, Scrollbar]);
 
-const swiperWrapper = document.querySelector('.swiper-wrapper');
+const key = '7906e35e';
+let name = 'dream';
+let pageNumber = 1;
 
-const mySwiper = new Swiper('.swiper-container', {
+const SearchMovie = document.querySelector('.searchMovie_input');
+const result = document.querySelector('.search-results');
+const searchBtn = document.querySelector('.search_btn');
+const totalResult = document.querySelector('.total-results');
+const swiperWrapper = document.querySelector('.swiper-wrapper');
+const loaderMovies = document.getElementById('loader');
+
+let mySwiper = new Swiper('.swiper-container', {
   breakpoints: {
     // when window width is >= 320px
     320: {
@@ -75,6 +84,52 @@ function CreateMovieCard(title, poster, year, imdbID, rate) {
   mySwiper.appendSlide(cards);
 }
 CreateMovieCard();
+
+function movieRequest() {
+  loaderMovies.style.display = 'block';
+  getTranslation(name).then((data) => data.text[0]).then((data) => {
+    if (/[а-яА-Я]/i.test(name)) {
+      name = data;
+    }
+    getMovies(name, pageNumber, key).then((movies) => {
+      result.innerHTML = `Showing results for "${name}"`;
+      totalResult.innerHTML = `found ${movies.totalResults} results`;
+      if (pageNumber === 1 && movies.Search) swiperWrapper.innerHTML = '';
+      movies.Search.forEach((movie) => {
+        getRate(movie.imdbID, key).then((rate) => {
+          CreateMovieCard(movie.Title, movie.Poster, movie.Year, rate.imdbID, rate.imdbRating);
+        });
+      });
+      loaderMovies.style.display = 'none';
+    }).catch(() => {
+      loaderMovies.style.display = 'none';
+      if (pageNumber === 1) {
+        result.innerHTML = `No results for "${name}"`;
+        loaderMovies.style.display = 'none';
+        totalResult.innerHTML = 'no results';
+      }
+    });
+  });
+}
+movieRequest();
+
+const findMovie = () => {
+  result.innerHTML = '';
+  pageNumber = 1;
+  name = SearchMovie.value;
+  if (name.length !== 0) movieRequest();
+};
+
+searchBtn.onclick = (event) => {
+  findMovie();
+  event.preventDefault();
+};
+
+mySwiper = document.querySelector('.swiper-container').swiper;
+mySwiper.on('reachEnd', () => {
+  pageNumber += 1;
+  movieRequest();
+});
 
 const next = document.querySelector('.swiper-button-next');
 next.onclick = () => { mySwiper.slideNext(); };
