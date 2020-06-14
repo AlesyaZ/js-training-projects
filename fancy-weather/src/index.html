@@ -1,0 +1,121 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Weather</title>
+  <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/png" href="./asstes/img/favicon.png">
+</head>
+<body class="background_back">
+  <div class="loader_container">
+    <div class="loader"></div>
+  </div>
+  <main>
+    <div class="wrapper">
+      <div class="controller_weather-forecast">
+        <button class="button update-backgr" id="switch-update-background">
+          <img class="icon icon_refresh" src="https://s1.iconbird.com/ico/0612/49handdrawnicons/w256h2561339857798refresh.png">
+        </button>
+        <div class="dropdown" id="lang-switcher">
+          <div class="menu_trigger">
+            <span class="trigger">RU</span>
+            <div class="arrow"></div>
+          </div>
+          <div class="lang_options">
+              <span data-lang="ru" class="option">RU</span>
+              <span data-lang="be" class="option">BY</span>
+              <span data-lang="en" class="option">EN</span>
+          </div>
+        </div>
+        <div class="controller_weather-forecast_connected" id="unit-switcher">
+          <button data-unit="I" class="button">F&#730;</button>
+          <button data-unit="M" class="button">C&#730;</button>
+        </div>
+      </div>
+      <form class="controller__location search-form" id="location-searcher">
+        <div class=input-container>
+          <input data-i18n="search.placeholder" class="input" type="search" placeholder="" id="search_input">
+          <img class="icon icon_SearchMicrophone" id="SearchMicrophone" src="https://s1.iconbird.com/ico/2013/9/450/w256h2561380453883Audio2256x25632.png">
+        </div>
+        <button data-i18n="search.button" class="button" type="submit"></button>
+      </form>
+    </div>
+    <div id="error_search"></div>
+      <div class="container_weather">
+        <div class="weather-forecast">
+          <div class="today">
+            <h3 data-i18n="-" class="place_location"></h3>
+            <p class="date-time_today"></p>
+            <div class="weather-today">
+              <div class="degree-container">
+                <h1 data-measure="temp" class="degree"></h1>
+                <h1>°</h1>
+              </div>
+              <div class="description_weather">
+                <img class="weather_img" src="#">
+                <div class="weather_conditions">
+                  <div class="wrapper_weather-conditions">
+                    <span data-i18n="-" id="description_weather" class="wrapper_weather-conditions__value"></span>
+                  </div>
+                  <div class="wrapper_weather-conditions">
+                    <span data-i18n="feel" class="wrapper_weather-conditions__name"></span>
+                    <span data-measure="temp" id="feels-like" class="wrapper_weather-conditions__value"></span>
+                  </div>
+                  <div class="wrapper_weather-conditions">
+                    <span data-i18n="wind" class="wrapper_weather-conditions__name"></span>
+                    <span id="wind" class="wrapper_weather-conditions__value"></span>
+                    <span data-i18n="ms"></span>
+                  </div>
+                  <div class="wrapper_weather-conditions">
+                    <span data-i18n="humidity" class="wrapper_weather-conditions__name"></span>
+                    <span id="humidity" class="wrapper_weather-conditions__value"></span>
+                    <span>%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="weather-forecast_three-days">
+            <div class="forecast_three-day">
+              <h4 data-i18n="-" class="forecast_three-day__date"></h4>
+              <div class="forecast_three-day__weather">
+                <h2 data-measure="temp" class="forecast_three-day__degree"></h2>
+                <img class="forecast_three-day__weather-img" src="#">
+              </div>
+            </div>
+            <div class="forecast_three-day">
+              <h4 data-i18n="-" class="forecast_three-day__date"></h4>
+              <div class="forecast_three-day__weather">
+                <h2 data-measure="temp" class="forecast_three-day__degree"></h2>
+                <img class="forecast_three-day__weather-img" src="#">
+              </div>
+            </div>
+            <div class="forecast_three-day">
+              <h4 data-i18n="-" class="forecast_three-day__date"></h4>
+              <div class="forecast_three-day__weather">
+                <h2 data-measure="temp" class="forecast_three-day__degree"></h2>
+                <img class="forecast_three-day__weather-img" src="#">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container_location">
+          <div class="map">
+            <div class="map__mask" id="map"></div>
+          </div>
+          <div class="coordinates">
+            <div class="latitude">
+              <p data-i18n="latitude"></p>
+              <p class="value"></p>
+            </div>
+            <div class="longitude">
+              <p data-i18n="longitude"></p>
+              <p class="value"></p>
+            </div>
+          </div>
+        </div>
+    </div>
+  </main>
+</body>
+</html>
