@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/reset.css">
+    <link rel="stylesheet" href="./dist/reveal.css">
+    <link rel="stylesheet" href="./dist/theme/night.css">
+    <link rel="stylesheet" href="./dist/lib/css/monokai.css">
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/plugin/highlight/highlight.js"></script>
+    <script src="./dist/reveal.js"></script>
+    <title>JavaScript Scope and Closures</title>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="slide-one">
+                <h2 class="slide-one-header">JavaScript Scope and Closures</h2>
+                <img class="slide-one-logo" src="./assets/img/title.jpg">
+                <div class="slide-one-footer">
+                    <a href="https://rs.school/js/" target="_blank">RSS 2020Q1</a>
+                    <div>Created by <b>Alesya Zarembo</b></div>
+                </div>
+                </div>
+            </section>
+
+            <section>
+                <section>
+                    <img class="slide-one-logo" src="./assets/img/scope.png">
+                    <p> There are two kinds of scope: </p> 
+                    <ol>
+                        <li> Global scope (attached to 'window') </li>
+                        <li> Local scope (inside a function) </li>
+                    </ol>
+                </section>
+                <section>
+                    <div>
+                            <h5>For example:</h5>
+                            <img class="slide-two-img" src="./assets/img/example_local_global.png">
+                    </div>
+                </section>
+                <section>
+                    <div> 
+                        <h5>BAD example:</h5>
+                        <img class="slide-two-img" src="./assets/img/bad_example_lg.png">
+                        <p style="font-size: 26px;">Although you can declare variables in the global scope, it is advised not to. 
+                            This is because there is a chance of naming collisions, where two or more variables are named the same. </p>
+                    </div>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <img class="slide-one-logo" src="./assets/img/scope code.png">
+                    <p> In JavaScript, there are two kinds of local scope: </p> 
+                    <ol>
+                        <li> Function scope  </li>
+                        <li> Block scope </li>
+                    </ol>
+                </section>
+                <section>
+                    <div>
+                        <h4>Block scope</h4>
+                        <p>A block scope is the area within if, switch conditions or for and while loops.</p>
+                        <img class="slide-two-img" src="./assets/img/block_scope.png">
+                    </div>
+                </section>
+                <section>
+                    <div> 
+                        <h4>Function scope</h4>
+                        <img class="slide-two-img" src="./assets/img/function_scope.png">
+                        <p>When you declare a variable in a function, you can access this variable only within the function. </p>
+                    </div>
+                </section>
+            </section>  
+
+            <section>
+                <section>
+                <h2>Nested scopes</h2>
+                <img class="slide-two-img" src="./assets/img/lexical_scope.png">
+                <p>When a function is defined in another function, 
+                    the inner function has access to the outer function’s variables. This behavior is called lexical scoping.</p>
+                </section>
+                <section>
+                    <img class="slide-for-img" src="./assets/img/one-way-glass.png">
+                </section>
+            </section>
+
+            <section>
+                <section>
+                <h2>Closures</h2>
+                <img class="slide-six-img" src="./assets/img/scope and closures.png">
+                </section>
+                <section>
+                        <div class = "slide-six">
+                            <div>
+                                <h5>For example:</h5>
+                                <p>Folder structure and files. </p>
+                                <img class="slide-one-img" src="./assets/img/example_closure.png">
+                            </div>
+                            <div>
+                                <p>Example closures</p>
+                                <img class="slide-one-img" src="./assets/img/closure.png">
+                            </div>
+                        </div>
+                </section>
+            </section>
+
+            <section>
+                <section>
+                    <h5> Since closures have access to the variables in the outer function, they are usually used for two things: </h5> 
+                    <ol>
+                        <li> To control side effects  </li>
+                        <li> To create private variables </li>
+                    </ol>
+                </section>
+                <section id="fragments">
+                    <h5> Controlling side effects with closures</h5>
+                    <p><img class="slide-one-img" src="./assets/img/closure_part1.png"></p>
+                    <p>
+                        <span class="fragment">
+                            <img class="slide-one-img" src="./assets/img/closure_part2.png">
+                        </span>
+                        <span class="fragment">
+                            <img class="slide-one-img" src="./assets/img/closure_part3.png">
+                        </span>
+                         <span class="fragment">
+                             <img class="slide-one-img" src="./assets/img/closure_part4.png">
+                        </span>
+                    </p>
+                </section>
+                <section>
+                    <h5> Private variables with closures </h5> 
+                    <img class="slide-six-img" src="./assets/img/closurePrivet.png">
+                </section>
+            </section>
+
+            <section class = "slide-end">
+                <h2>Thank you for attention!</h2>
+            </section>
+        </div>
+    </div>
+    <script>
+        Reveal.initialize(
+            {
+                plugins: [ RevealHighlight ]
+            }
+        );
+    </script>
+</body>
+</html>
