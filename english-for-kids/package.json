@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "style": "sass --watch src/sass/main.scss src/sass/style.css",
     "build": "webpack -p",
     "watch": "webpack --watch"
   },
@@ -19,7 +20,8 @@
   "homepage": "https://github.com/rolling-scopes-school/alesyaz-RS2020Q1/#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "sass": "^1.72.0",
+    "webpack": "^4.47.0",
+    "webpack-cli": "^3.3.12"
   }
 }

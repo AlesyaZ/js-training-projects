@@ -1,0 +1,59 @@
+.navigation-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  visibility: hidden;
+}
+
+.navigation {
+  @include color(180deg, $color-primary1, $color-primary2);
+  @extend %transition;
+  width: 320px;
+  height: 100vh;
+  position: relative;
+  left: -320px;
+
+  &.navigation__play {
+    @include color(180deg, $color-additional1, $color-additional2);
+  }
+
+  & li {
+    list-style: none;
+    color: #2f4f4f;
+    font-family: "Roboto", sans-serif;
+    font-size: 24px;
+  }
+
+  & a {
+    color: $color-light;
+    cursor: pointer;
+  }
+}
+
+.navigation__list {
+  padding-top: 90px;
+  padding-left: 50px;
+  padding: 90px 0px 15px 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+@media (hover: hover) {
+  .navigation a:hover {
+    text-decoration: underline;
+  }
+}
+
+.navigation a.select {
+  text-decoration: underline;
+}
+
+.navigation-active {
+  & .navigation {
+    left: 0px;
+  }
+  visibility: visible;
+}

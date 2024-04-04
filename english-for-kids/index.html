@@ -1,181 +1,209 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>English for kids</title>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
-        <link href="style.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="navigation-container">
-            <nav class="navigation">
-                <ul>
-                    <li>
-                        <a class="activeMenu">Main Page</a>
-                    </li>
-                    <li>
-                        <a>Action (set A)</a>
-                    </li>
-                    <li>
-                        <a>Action (set B)</a>
-                    </li>
-                    <li>
-                        <a>Animal (set A)</a>
-                    </li>
-                    <li>
-                        <a>Animal (set B)</a>
-                    </li>
-                    <li>
-                        <a>Clothes</a>
-                    </li>
-                    <li>
-                        <a>Emotions</a>
-                    </li>
-                    <li>
-                        <a>Professions</a>
-                    </li>
-                    <li>
-                        <a>Weather</a>
-                    </li>
-                    <li>
-                        <a>Statistics</a>
-                    </li>
-                </ul>
-            </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>English for kids</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="src/sass/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="navigation-container">
+      <nav class="navigation">
+        <ul class="navigation__list">
+          <li>
+            <a class="navigation-active">Main Page</a>
+          </li>
+          <li>
+            <a>Action (set A)</a>
+          </li>
+          <li>
+            <a>Action (set B)</a>
+          </li>
+          <li>
+            <a>Animal (set A)</a>
+          </li>
+          <li>
+            <a>Animal (set B)</a>
+          </li>
+          <li>
+            <a>Clothes</a>
+          </li>
+          <li>
+            <a>Emotions</a>
+          </li>
+          <li>
+            <a>Professions</a>
+          </li>
+          <li>
+            <a>Weather</a>
+          </li>
+          <li>
+            <a>Statistics</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <header class="header">
+      <div class="header__wrapper wrapper">
+        <div class="header__hamburger">
+          <span class="hamburger__line"></span>
         </div>
-        
-        <div class="wrapper">
-            <header class="header">
-                <div class="header__hamburger">
-                    <span class="hamburger__line"></span>
-                </div>
-                <span class="header__section-name">Main Page</span>
-                 <label class="switcher">
-                     <input type="checkbox"> 
-                     <span class="slider round"></span>
-                    </label>
-                </header>
 
-                <div class="stars-container"></div>
+        <span class="header__title">English for kids</span>
 
-                <main class="cards-container four-column-layout">
-                    <div class="card">
-                        <div class="front">
-                        <img src="./assets/img/hug.jpg" class="card__image">
-                        <div class="card__title">Action (set A)
+        <label class="switcher">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </header>
 
-                        </div>
-                        <span style="background-image:url(assets/img/rotate.png)" class="rotate">
-                        </span>
-                    </div>
-                    <div class="back">
-                        <img src="./assets/img/hug.jpg" class="card__image">
-                        <div class="card__title">Action (set A)
+    <div class="stars-container"></div>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="front">
-                        <img src="./assets/img/sing.jpg" class="card__image">
-                        <div class="card__title">Action (set B)</div>
-                        <span style="background-image:url(assets/img/rotate.png)" class="rotate">
-                        </span>
-                    </div>
+    <main class="cards-container">
+      <div class="cards__wrapper wrapper">
+        <div class="card">
+          <div class="front">
+            <img src="./src/assets/img/hug.jpg" class="card__image" />
+            <div class="card__title">Action (set A)</div>
+            <span
+              style="background-image: url(./src/assets/img/rotate.png)"
+              class="rotate"
+            >
+            </span>
+          </div>
+          <div class="back">
+            <img src="./src/assets/img/hug.jpg" class="card__image" />
+            <div class="card__title">Action (set A)</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="front">
+            <img src="./src/assets/img/sing.jpg" class="card__image" />
+            <div class="card__title">Action (set B)</div>
+            <span
+              style="background-image: url(./src/assets/img/rotate.png)"
+              class="rotate"
+            >
+            </span>
+          </div>
 
-                    <div class="back">
-                        <img src="./assets/img/sing.jpg" class="card__image">
-                        <div class="card__title">Action (set B)</div>
-                    </div>
-                </div>
+          <div class="back">
+            <img src="./src/assets/img/sing.jpg" class="card__image" />
+            <div class="card__title">Action (set B)</div>
+          </div>
+        </div>
 
-                <div class="card">
-                    <div class="front">
-                        <img src="./assets/img/dog.jpg" class="card__image">
-                        <div class="card__title">Animal (set A)</div>
-                        <span style="background-image:url(assets/img/rotate.png)" class="rotate"></span>
-                    </div>
-                            
-                        <div class="back">
-                        <img src="./assets/img/dog.jpg" class="card__image">
-                        <div class="card__title">Animal (set A)</div>
-                    </div>
-                </div>
-                  
-                <div class="card">
-                    <div class="front">
-                        <img src="./assets/img/lion.jpg" class="card__image">
-                        <div class="card__title">Animal (set B)</div>
-                        <span style="background-image:url(assets/img/rotate.png)" class="rotate"></span>
-                    </div>
-                            
-                        <div class="back">
-                        <img src="./assets/img/lion.jpg" class="card__image">
-                        <div class="card__title">Animal (set B)</div>
-                    </div>
-                </div>
+        <div class="card">
+          <div class="front">
+            <img src="./src/assets/img/dog.jpg" class="card__image" />
+            <div class="card__title">Animal (set A)</div>
+            <span
+              style="background-image: url(./src/assets/img/rotate.png)"
+              class="rotate"
+            ></span>
+          </div>
 
-                <div class="card">
-                    <div class="front">
-                        <img src="./assets/img/skirt.jpg" class="card__image">
-                        <div class="card__title">Clothes</div>
-                        <span style="background-image:url(assets/img/rotate.png)" class="rotate"></span>
-                    </div>
-                            
-                        <div class="back">
-                        <img src="./assets/img/skirt.jpg" class="card__image">
-                        <div class="card__title">Clothes</div>
-                    </div>
-                </div>
+          <div class="back">
+            <img src="./src/assets/img/dog.jpg" class="card__image" />
+            <div class="card__title">Animal (set A)</div>
+          </div>
+        </div>
 
-                <div class="card">
-                    <div class="front">
-                        <img src="./assets/img/smile.jpg" class="card__image">
-                        <div class="card__title">Emotions</div>
-                        <span style="background-image:url(assets/img/rotate.png)" class="rotate"></span>
-                    </div>
-                            
-                        <div class="back">
-                        <img src="./assets/img/smile.jpg" class="card__image">
-                        <div class="card__title">Emotions</div>
-                    </div>
-                </div>
+        <div class="card">
+          <div class="front">
+            <img src="./src/assets/img/lion.jpg" class="card__image" />
+            <div class="card__title">Animal (set B)</div>
+            <span
+              style="background-image: url(./src/assets/img/rotate.png)"
+              class="rotate"
+            ></span>
+          </div>
 
-                <div class="card">
-                    <div class="front">
-                        <img src="./assets/img/doctor.png" class="card__image">
-                        <div class="card__title">Professions</div>
-                        <span style="background-image:url(assets/img/rotate.png)" class="rotate"></span>
-                    </div>
-                            
-                        <div class="back">
-                        <img src="./assets/img/doctor.png" class="card__image">
-                        <div class="card__title">Professions</div>
-                    </div>
-                </div>
+          <div class="back">
+            <img src="./src/assets/img/lion.jpg" class="card__image" />
+            <div class="card__title">Animal (set B)</div>
+          </div>
+        </div>
 
-                <div class="card">
-                    <div class="front">
-                        <img src="./assets/img/rain.png" class="card__image">
-                        <div class="card__title">Weather</div>
-                        <span style="background-image:url(assets/img/rotate.png)" class="rotate"></span>
-                    </div>
-                            
-                        <div class="back">
-                        <img src="./assets/img/rain.png" class="card__image">
-                        <div class="card__title">Weather</div>
-                    </div>
-                </div>
+        <div class="card">
+          <div class="front">
+            <img src="./src/assets/img/skirt.jpg" class="card__image" />
+            <div class="card__title">Clothes</div>
+            <span
+              style="background-image: url(./src/assets/img/rotate.png)"
+              class="rotate"
+            ></span>
+          </div>
 
-            </main>
-                                        
-                                        
-            <button class="button hidden">Start game</button>
-            </div>
-        <div style="display:none" class="modal"></div>
-                                                            
-        <script src="./diste/main.js" ></script>
-    </body>
+          <div class="back">
+            <img src="./src/assets/img/skirt.jpg" class="card__image" />
+            <div class="card__title">Clothes</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="front">
+            <img src="./src/assets/img/smile.jpg" class="card__image" />
+            <div class="card__title">Emotions</div>
+            <span
+              style="background-image: url(./src/assets/img/rotate.png)"
+              class="rotate"
+            ></span>
+          </div>
+
+          <div class="back">
+            <img src="./src/assets/img/smile.jpg" class="card__image" />
+            <div class="card__title">Emotions</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="front">
+            <img src="./src/assets/img/doctor.png" class="card__image" />
+            <div class="card__title">Professions</div>
+            <span
+              style="background-image: url(./src/assets/img/rotate.png)"
+              class="rotate"
+            ></span>
+          </div>
+
+          <div class="back">
+            <img src="./src/assets/img/doctor.png" class="card__image" />
+            <div class="card__title">Professions</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="front">
+            <img src="./src/assets/img/rain.png" class="card__image" />
+            <div class="card__title">Weather</div>
+            <span
+              style="background-image: url(./src/assets/img/rotate.png)"
+              class="rotate"
+            ></span>
+          </div>
+
+          <div class="back">
+            <img src="./src/assets/img/rain.png" class="card__image" />
+            <div class="card__title">Weather</div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <button class="button hidden">Start game</button>
+    <div style="display: none" class="modal"></div>
+
+    <script src="./diste/main.js"></script>
+  </body>
 </html>
