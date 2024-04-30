@@ -12,7 +12,7 @@ module.exports = (env, options) => {
     mode: isProduction ? "production" : "development",
 
     watch: !isProduction,
-    entry: ["./src/index.js", "./src/sass/main.scss"],
+    entry: ["./src/index.ts", "./src/sass/main.scss"],
     output: {
       path: path.join(__dirname, "/dist"),
       filename: "script.js",
@@ -20,15 +20,20 @@ module.exports = (env, options) => {
 
     module: {
       rules: [
+        // {
+        //   test: /\.js$/,
+        //   exclude: /node_modules/,
+        //   use: {
+        //     loader: "babel-loader",
+        //     options: {
+        //       presets: ["@babel/preset-env"],
+        //     },
+        //   },
+        // },
         {
-          test: /\.js$/,
+          test: /\.tsx?$/,
+          use: "ts-loader",
           exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-env"],
-            },
-          },
         },
         {
           test: /\.scss$/,
@@ -62,6 +67,9 @@ module.exports = (env, options) => {
         ],
       }),
     ],
+    resolve: {
+      extensions: [".tsx", ".ts", ".js"],
+    },
   };
 
   return config;
